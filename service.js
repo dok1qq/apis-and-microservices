@@ -40,6 +40,24 @@ app.get("/api/timestamp/:date_string", (req, res) => {
   res.json({ "unix": null, "utc" : "Invalid Date" });
 });
 
+app.get('/api/whoami', (req, res) => {
+  console.log(req.params);
+
+  const {
+    headers: {
+      'user-agent': software,
+      'accept-language': language,
+      'host': ipaddress,
+    }
+  } = req;
+
+  res.json({
+    ipaddress,
+    language,
+    software,
+  });
+});
+
 const listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
