@@ -4,8 +4,9 @@
 	"description": "An FCC Backend Challenge",
 	"main": "server.js",
 	"scripts": {
-		"start": "node service.js",
-		"start:urlshortener": "node urlshortener.js"
+		"start": "node src/service.js",
+		"start:urlshortener": "node src/urlshortener.js",
+		"start:tracker": "node src/tracker.js"
 	},
 	"dependencies": {
 		"body-parser": "^1.15.2",

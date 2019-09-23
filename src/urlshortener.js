@@ -3,9 +3,7 @@
 const express = require('express');
 const dns = require('dns');
 const bodyParser = require('body-parser');
-const mongo = require('mongodb');
 const mongoose = require('mongoose');
-const shortid = require("shortid");
 const Url = require('./scheme/url');
 const extractHostname = require('./helpers/extractHostname');
 
@@ -23,10 +21,10 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use('/public', express.static(process.cwd() + '/public'));
+app.use('/public', express.static(process.cwd() + '/src/public'));
 
-app.get('/', function(req, res){
-    res.sendFile(process.cwd() + '/views/urlshortener.html');
+app.get('/', function(req, res) {
+    res.sendFile(process.cwd() + '/src/views/urlshortener.html');
 });
 
 app.get('/api/shorturl/:id', (req, res) => {

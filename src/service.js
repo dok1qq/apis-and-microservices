@@ -9,7 +9,7 @@ const app = express();
 // so that your API is remotely testable by FCC 
 const cors = require('cors');
 app.use(cors({optionSuccessStatus: 200}));  // some legacy browsers choke on 204
-app.use(express.static('public'));
+app.use('/public', express.static(process.cwd() + '/src/public'));
 
 app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
