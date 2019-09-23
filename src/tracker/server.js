@@ -5,6 +5,11 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
+// routes
+const users = require('./routes/users');
+const newUser = require('./routes/new-user');
+const add = require('./routes/add');
+const log = require('./routes/log');
 
 dotenv.config();
 
@@ -18,6 +23,11 @@ app.use('/public', express.static(__dirname + '/public'));
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/tracker.html')
 });
+
+app.get('/api/exercise/log', log);
+app.post('/api/exercise/add', add);
+app.get('/api/exercise/users', users);
+app.post('/api/exercise/new-user', newUser);
 
 
 // Not found middleware
